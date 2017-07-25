@@ -1,5 +1,7 @@
 package com.lw.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -20,16 +22,25 @@ public class UserService {
   @Resource
   private RedisCache redisCache;
   
+//  public User getUserById(int userId) {
+//    String cache_key = RedisCache.CAHCENAME+"|getUserById"+userId;
+//    User user = redisCache.getCache(cache_key, User.class);
+//    if(user != null){
+//      log.info("get cache with key:"+cache_key);
+//    }else {
+//      user = userMapper.selectByPrimaryKey(userId);
+//      redisCache.putCacheWithExpireTime(cache_key, user, RedisCache.CAHCETIME);
+//      log.info("put cache with key:"+cache_key);
+//    }
+//    return user;
+//  }
+  
   public User getUserById(int userId) {
-    String cache_key = RedisCache.CAHCENAME+"|getUserById"+userId;
-    User user = redisCache.getCache(cache_key, User.class);
-    if(user != null){
-      log.info("get cache with key:"+cache_key);
-    }else {
-      user = userMapper.selectByPrimaryKey(userId);
-      redisCache.putCacheWithExpireTime(cache_key, user, RedisCache.CAHCETIME);
-      log.info("put cache with key:"+cache_key);
-    }
+    User user = userMapper.selectByPrimaryKey(userId);
     return user;
+  }
+  
+  public List<User> getUsers(){
+    return userMapper.getUsers();
   }
 }

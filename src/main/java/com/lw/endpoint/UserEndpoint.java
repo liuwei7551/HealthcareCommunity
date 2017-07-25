@@ -1,8 +1,12 @@
 package com.lw.endpoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +19,7 @@ import com.lw.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin
 @Controller
 public class UserEndpoint {
 
@@ -24,10 +29,22 @@ public class UserEndpoint {
   @ApiOperation(value = "获取用户信息")
   @ResponseBody // 将Java对象输出json
   @RequestMapping(value = { "api/v1/user/{userId}" }, method = RequestMethod.GET)
-  public ResponseDto<User> getUser(@PathVariable final int userId) {
-    return ResponseDto.create(userService.getUserById(userId));
+  public List<User1> getUser(@PathVariable final int userId) {
+//    return ResponseDto.create(userService.getUserById(userId));
+    List<User1> users = new ArrayList<>();
+    users.add(new User1("aaa", "bbb"));
+    users.add(new User1("11", "22"));
+    return users;
   }
   
+  @ApiOperation(value = "获取用户信息")
+  @ResponseBody // 将Java对象输出json
+  @RequestMapping(value = { "api/v1/user" }, method = RequestMethod.GET)
+  public List<User> userList() {
+    return userService.getUsers();
+  }
+  
+  @ResponseBody
   @RequestMapping(value = { "api/v1/user/load" }, method = RequestMethod.GET)
   public ResponseDto<?> load() {
     System.out.println("name is "+ "aa");
