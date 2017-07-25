@@ -18,7 +18,7 @@
   <input id="b1" type="button" value="Load加载"/>
   <div id="d1">aaa</div>
   <hr/>
-  <form id="submitForm"  action="${pageContext.request.contextPath}/api/v1/user/login"  method="post" />
+  <form id="submitForm" action="${pageContext.request.contextPath}/api/v1/user/login" method="post">
     <div>
        用户名： <input type="text"  id="userName" name="userName" class="username"  value="${user.userName }" />
     </div>
