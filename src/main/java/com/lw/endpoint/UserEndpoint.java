@@ -37,7 +37,6 @@ public class UserEndpoint {
     return users;
   }
   
-  @ApiOperation(value = "获取用户信息")
   @ResponseBody // 将Java对象输出json
   @RequestMapping(value = { "api/v1/user" }, method = RequestMethod.GET)
   public List<User> userList() {
@@ -57,5 +56,15 @@ public class UserEndpoint {
   public User1 getUser(User1 user) {
     System.out.println(user.getUserName());
     return user;
+  }
+  
+  @ResponseBody // 将Java对象输出json
+  @RequestMapping(value = { "api/v1/user/checkUserName" }, method = RequestMethod.GET)
+  public ResponseDto<?> checkUserName(final String userName) {
+    ResponseDto<?> responseDto = ResponseDto.OK;
+    if(userName.equals("lw")){
+      responseDto.setResponseCode("001");
+    }
+    return responseDto;
   }
 }
