@@ -17,8 +17,6 @@
             {
              alert( "the man's no. is: " + index + ",and " + content.userName + " is learning " + content.pwd );
             });
-          $('#d2').append(r);
-          alert("2");
         },
         error: function(data){
           alert("error")
@@ -48,10 +46,11 @@
   }
   </script>
 <body>
-<h2>Hello World!</h2>
-<h3>测试</h3>
-<h4>hasdaqqqq</h4>
-<button id="b2">点我</button>
+  <h2>Hello World!</h2>
+  <h3>测试</h3>
+  <h4>hasdaqqqq</h4>
+  <%-- <button id="b3">跳转到echarts</button> --%>
+  <button id="b2">点我</button>
   <input id="b1" type="button" value="Load加载"/>
   <div id="d1">aaa</div>
   <div id="d2"></div>
@@ -69,5 +68,10 @@
       <input type="reset" class="login_btn" id="login_ret" value="重 置">
     </div>
   </form>
+
+  <div id="echarts" style="margin-top: 20px;">
+    <jsp:include page="echarts.jsp" flush="true"/>
+  </div>
+
 </body>
 </html>
