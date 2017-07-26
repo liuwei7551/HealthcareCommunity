@@ -70,7 +70,7 @@
   </form>
 
   <div id="echarts" style="margin-top: 20px;">
-    <jsp:include page="echarts.jsp" flush="true"/>
+    <jsp:include page="echarts1.jsp" flush="true"/>
   </div>
 
 </body>

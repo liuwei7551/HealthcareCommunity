@@ -29,7 +29,7 @@
                         {value:310, name:'邮件营销'},
                         {value:274, name:'联盟广告'},
                         {value:235, name:'视频广告'}
-                    ],
+                      ],
                     roseType: 'angle',
 
                     itemStyle: {
@@ -56,8 +56,52 @@
                 }
             ]
         }
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+
+        // $.ajax({
+        //   // async: "false",
+        //   type: "GET",
+        //   url: "api/v1/test/data",
+        //   dataType: "json",
+        //   success:function(result){
+        // 	alert(result.length);
+        //     var data = [];
+        //     $.each( result, function(index, content)
+        //       {
+        //         data[index] = {name: result[index]["name"], value: result[index]["value"]};
+        //       //  alert( "the man's no. is: " + index + ",and " + result[index].name + " is learning " + result[index].value );
+        //       });
+        //     // for (var i = 0; i <= result.length; i++){
+        //     //   alert(result[0].name);
+        //     // }
+        //     option.series[0].data = data;
+        //     myChart.setOption(option);
+        //     }
+        // });
+
+        $.ajax({
+          // async: "false",
+          type: "GET",
+          url: "api/v1/test/data",
+          dataType: "json",
+          success:function(result){
+        	alert(result.length);
+            var r = JSON.stringify(result);
+            alert(r);
+            var obj = JSON.parse(r);
+            var data = [];
+            $.each( obj, function(index, content)
+              {
+                data[index] = {name: obj[index].name, value: obj[index].value};
+              //  alert( "the man's no. is: " + index + ",and " + result[index].name + " is learning " + result[index].value );
+              });
+            // for (var i = 0; i <= result.length; i++){
+            //   alert(result[0].name);
+            // }
+            option.series[0].data = data;
+            myChart.setOption(option);
+            }
+        });
+
     </script>
 </body>
 </html>
