@@ -1,10 +1,7 @@
 package com.lw.endpoint;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,16 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lw.service.UserService;
-
 import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin
 @Controller
 public class Test {
-
-  @Resource
-  private UserService userService;
 
   @ApiOperation(value = "获取表格所需数据")
   @ResponseBody // 将Java对象输出json

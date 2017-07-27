@@ -13,18 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lw.dto.ResponseDto;
-import com.lw.entity.User;
 import com.lw.entity.User1;
-import com.lw.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin
 @Controller
 public class UserEndpoint {
-
-  @Resource
-  private UserService userService;
 
   @ApiOperation(value = "获取用户信息")
   @ResponseBody // 将Java对象输出json
@@ -36,13 +31,7 @@ public class UserEndpoint {
     users.add(new User1("11", "22"));
     return users;
   }
-  
-  @ResponseBody // 将Java对象输出json
-  @RequestMapping(value = { "api/v1/user" }, method = RequestMethod.GET)
-  public List<User> userList() {
-    return userService.getUsers();
-  }
-  
+   
   @ResponseBody
   @RequestMapping(value = { "api/v1/user/load" }, method = RequestMethod.GET)
   public ResponseDto<?> load() {
