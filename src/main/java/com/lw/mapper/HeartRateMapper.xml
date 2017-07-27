@@ -7,9 +7,20 @@
     <result column="date_time" jdbcType="TIMESTAMP" property="dateTime" />
     <result column="rate" jdbcType="INTEGER" property="rate" />
   </resultMap>
+  
+  <resultMap id="BaseResultMapDto" type="com.lw.dto.HeartRateDto">
+    <result column="date_time" jdbcType="TIMESTAMP" property="dateTime" />
+    <result column="rate" jdbcType="INTEGER" property="rate" />
+  </resultMap>
+  
   <sql id="Base_Column_List">
     id, user_id, date_time, rate
   </sql>
+  
+  <sql id="Dto_Column_List">
+    date_time, rate
+  </sql>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -81,5 +92,11 @@
     	(#{heartRate.userId,jdbcType=INTEGER}, #{heartRate.dateTime,jdbcType=TIMESTAMP}, #{heartRate.rate,jdbcType=INTEGER})
     </foreach>
   </insert>
+  
+  <select id="select" resultMap="BaseResultMapDto">
+    select 
+    <include refid="Dto_Column_List" />
+    from heart_rate
+  </select>
   
 </mapper>

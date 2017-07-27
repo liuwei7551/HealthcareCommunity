@@ -2,6 +2,7 @@ package com.lw.dao;
 
 import java.util.List;
 
+import com.lw.dto.HeartRateDto;
 import com.lw.entity.HeartRate;
 
 public interface HeartRateMapper {
@@ -18,4 +19,6 @@ public interface HeartRateMapper {
     int updateByPrimaryKey(HeartRate record);
     
     int batchInsert(List<HeartRate> heartRates);
+    
+    List<HeartRateDto> select();
 }

@@ -3,7 +3,6 @@ package com.lw.endpoint;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -26,37 +25,6 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 public class Test {
   
-  @Autowired
-  private HeartRateService heartRateService;
-  
-  @ResponseBody // 将Java对象输出json
-  @RequestMapping(value = { "api/v1/heartRate/batchInsert" }, method = RequestMethod.GET)
-  public ResponseDto<?> insertHeartRate() throws ParseException{
-    Random random = new Random();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date date = simpleDateFormat.parse("2017-07-27 00:00:00");
-    int userId = 1;
-    List<HeartRate> heartRates = new ArrayList<>();
-    for(int i = 0; i < 100; i++) {
-      heartRates.add(new HeartRate(userId, date, 65 + random.nextInt(20)));
-      date = DateUtils.getDateBefore(date);
-    }
-    heartRateService.bachInsert(heartRates);
-    return ResponseDto.OK;
-  }
-  
-  @ResponseBody // 将Java对象输出json
-  @RequestMapping(value = { "api/v1/heartRate/insert" }, method = RequestMethod.GET)
-  public ResponseDto<?> add() throws ParseException{
-    Random random = new Random();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date date = simpleDateFormat.parse("2017-07-27 00:00:00");
-    int userId = 1;
-    HeartRate heartRate = new HeartRate(userId, date, 65 + random.nextInt(20));
-    heartRate.setId(1);
-    heartRateService.insert(heartRate);
-    return ResponseDto.OK;
-  }
   
   
   @ApiOperation(value = "获取表格所需数据")
