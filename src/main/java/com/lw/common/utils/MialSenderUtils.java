@@ -23,7 +23,7 @@ public class MialSenderUtils {
    * @throws GeneralSecurityException
    * @throws MessagingException
    */
-  public static void send(String subject, String content, String address) throws GeneralSecurityException, MessagingException {
+  public static void sendMail(String subject, String content, String address) throws GeneralSecurityException, MessagingException {
     Properties props = new Properties();
 
     // 开启debug调试
