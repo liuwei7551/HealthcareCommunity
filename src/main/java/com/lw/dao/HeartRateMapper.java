@@ -1,5 +1,7 @@
 package com.lw.dao;
 
+import java.util.List;
+
 import com.lw.entity.HeartRate;
 
 public interface HeartRateMapper {
@@ -14,4 +16,6 @@ public interface HeartRateMapper {
     int updateByPrimaryKeySelective(HeartRate record);
 
     int updateByPrimaryKey(HeartRate record);
+    
+    int batchInsert(List<HeartRate> heartRates);
 }

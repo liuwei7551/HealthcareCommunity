@@ -10,6 +10,13 @@ public class HeartRate {
     private Date dateTime;
 
     private Integer rate;
+    
+    public HeartRate(Integer userId, Date dateTime, Integer rate) {
+      super();
+      this.userId = userId;
+      this.dateTime = dateTime;
+      this.rate = rate;
+    }
 
     public Integer getId() {
         return id;
