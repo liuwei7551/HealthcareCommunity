@@ -5,6 +5,28 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
+
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: "api/v1/heartRate",
+  //   dataType: "json",
+  //   success:function(result){
+  //     var rData = result.data;
+  //     alert(rData.length);
+  //     var r = JSON.stringify(rData);
+  //     alert(r);
+  //     var obj = JSON.parse(r);
+  //     var data = [];
+  //     $.each( obj, function(index, content)
+  //       {
+  //         data[index] = {name: obj[index].name, value: obj[index].value};
+  //       });
+  //     option.series[0].data = data;
+  //     // myChart.setOption(option);
+  //     }
+  // });
+
     $(document).ready(function(){
     $("#b2").click(function(){
       $.ajax({
@@ -70,7 +92,7 @@
   </form>
 
   <div id="echarts" style="margin-top: 20px;">
-    <jsp:include page="echarts1.jsp" flush="true"/>
+    <jsp:include page="StaticLines.jsp" flush="true"/>
   </div>
 
 </body>
