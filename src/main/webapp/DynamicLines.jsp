@@ -13,6 +13,16 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
+        function formatData(time, rate){
+          return {
+              name: time.toString(),
+              value: [
+                  time.toString(),
+                  rate
+              ]
+          }
+        }
+
         function randomData() {
             now = new Date(+now + oneDay);
             value = value + Math.random() * 21 - 10;
@@ -70,21 +80,44 @@
             }]
         };
 
-        setInterval(function () {
+        //动态添加数据
+        // setInterval(function () {
+        //
+        //     for (var i = 0; i < 5; i++) {
+        //         data.shift();
+        //         data.push(randomData());
+        //     }
+        //
+        //     myChart.setOption({
+        //         series: [{
+        //             data: data
+        //         }]
+        //     });
+        // }, 1000);
 
-            for (var i = 0; i < 5; i++) {
-                data.shift();
-                data.push(randomData());
+        $.ajax({
+          type: "GET",
+          url: "api/v1/heartRate",
+          dataType: "json",
+          success:function(result){
+            var rData = result.data;
+            var r = JSON.stringify(rData);
+            var obj = JSON.parse(r);
+            var datas = [];
+            $.each( obj, function(index, content)
+              {
+                datas.push(formatData(obj[index].dateTime, obj[index].rate))
+              });
+              myChart.setOption({
+                  series: [{
+                      data: datas
+                  }]
+              });
             }
+        });
 
-            myChart.setOption({
-                series: [{
-                    data: data
-                }]
-            });
-        }, 1000);
 
-        myChart.setOption(option);
+        myChart.setOption(option, true);
     </script>
 </body>
 </html>

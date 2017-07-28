@@ -7,6 +7,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.*;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+
 import com.sun.mail.util.MailSSLSocketFactory;
 
 import java.security.GeneralSecurityException;
@@ -55,5 +57,9 @@ public class MialSenderUtils {
     transport.connect("smtp.qq.com", "755151050@qq.com", "ecbbxhhrufilbdgf");
     transport.sendMessage(msg, new Address[] { new InternetAddress(address) });
     transport.close();
+  }
+  
+  public static void main(String[] args) throws GeneralSecurityException, MessagingException {
+    MialSenderUtils.sendMail("测试sendmail", "你好啊", "liuwei7551@163.com");
   }
 }

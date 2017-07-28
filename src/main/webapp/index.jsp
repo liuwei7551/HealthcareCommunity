@@ -92,7 +92,7 @@
   </form>
 
   <div id="echarts" style="margin-top: 20px;">
-    <jsp:include page="StaticLines.jsp" flush="true"/>
+    <jsp:include page="DynamicLines.jsp" flush="true"/>
   </div>
 
 </body>
