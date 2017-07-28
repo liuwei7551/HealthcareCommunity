@@ -7,8 +7,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.*;
 
-import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
-
 import com.sun.mail.util.MailSSLSocketFactory;
 
 import java.security.GeneralSecurityException;
@@ -16,16 +14,18 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MialSenderUtils {
-  
+
   /**
    * 实现邮件的发送
+   * 
    * @param subject:邮件主题
    * @param content:邮件正文
    * @param address:邮件发送用户账号
    * @throws GeneralSecurityException
    * @throws MessagingException
    */
-  public static void sendMail(String subject, String content, String address) throws GeneralSecurityException, MessagingException {
+  public static void sendMail(String subject, String content, String address)
+      throws GeneralSecurityException, MessagingException {
     Properties props = new Properties();
 
     // 开启debug调试
@@ -58,7 +58,7 @@ public class MialSenderUtils {
     transport.sendMessage(msg, new Address[] { new InternetAddress(address) });
     transport.close();
   }
-  
+
   public static void main(String[] args) throws GeneralSecurityException, MessagingException {
     MialSenderUtils.sendMail("测试sendmail", "你好啊", "liuwei7551@163.com");
   }
